@@ -13,7 +13,7 @@ export const Route = createFileRoute('/')({
   { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' },
  ] }), component: Portfolio,
 });
-const sections = [['home','Home'],['about','About'],['education','Education'],['skills','Skills'],['projects','Projects'],['certifications','Certifications'],['contact','Contact']];
+const sections: [string, string][] = [['home','Home'],['about','About'],['education','Education'],['skills','Skills'],['projects','Projects'],['certifications','Certifications'],['contact','Contact']];
 const skills = [
  { icon: Code2, title: 'Programming foundations', subtitle: 'Building a strong base', tags: ['C / C++', 'Python', 'Problem solving'] },
  { icon: Braces, title: 'Web development', subtitle: 'Turning ideas into pages', tags: ['HTML', 'CSS', 'JavaScript'] },
@@ -40,7 +40,7 @@ function Portfolio() {
   <header className="site-header">
    <div className="page-width flex h-full items-center justify-between gap-6">
     <a href="#home" className="wordmark" aria-label="Arsh home"><span className="wordmark-mark">{'< / >'}</span> arsh<span className="text-primary">.</span></a>
-    <nav className="desktop-nav flex items-center gap-6" aria-label="Main navigation">{sections.map(([id,label]) => <a key={id} href={`#${id}`} className={`nav-link ${active === id ? 'active' : ''}`}>{label}</a>)}</nav>
+    <nav className="hidden items-center gap-6 lg:flex" aria-label="Main navigation">{sections.map(([id,label]) => <a key={id} href={`#${id}`} className={`nav-link ${active === id ? 'active' : ''}`}>{label}</a>)}</nav>
     <div className="flex items-center gap-2"><Button asChild variant="outline" className="hidden sm:inline-flex"><a href="#contact">Let's talk <ArrowUpRight /></a></Button><Button variant="ghost" size="icon" className="lg:hidden" aria-label={menuOpen ? 'Close menu' : 'Open menu'} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</Button></div>
    </div>
    {menuOpen && <nav className="border-b border-border bg-background px-5 py-4 lg:hidden" aria-label="Mobile navigation">{sections.map(([id,label]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)} className="block py-3 text-sm">{label}</a>)}</nav>}
